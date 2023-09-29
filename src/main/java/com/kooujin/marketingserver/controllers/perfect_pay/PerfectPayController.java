@@ -28,4 +28,11 @@ public class PerfectPayController {
 
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
     }
+
+    @PostMapping("/buyer")
+    public ResponseEntity<Buyer> saveBuyer(@RequestBody PerfectPayDTO buyer) {
+        Buyer newBuyer = new Buyer(buyer.getCustomer().getFull_name(), buyer.getCustomer().getEmail(), buyer.getCustomer().getIdentification_number());
+        return ResponseEntity.status(HttpStatus.CREATED).body(buyerRepository.save(newBuyer));
+    }
+
 }
