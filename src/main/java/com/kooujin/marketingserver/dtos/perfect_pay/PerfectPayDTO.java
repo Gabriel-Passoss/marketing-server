@@ -9,5 +9,7 @@ import lombok.*;
 public class PerfectPayDTO {
     @NonNull
     private Customer customer;
+
+    public PerfectPayDTO() {}
 }
 

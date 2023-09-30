@@ -15,4 +15,6 @@ public class Customer {
 
     @NonNull
     private String identification_number;
+
+    public Customer() {}
 }
