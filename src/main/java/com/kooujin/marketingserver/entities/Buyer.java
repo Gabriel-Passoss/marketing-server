@@ -16,7 +16,8 @@ public class Buyer implements Serializable {
     private static final long serialVersionID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(columnDefinition = "uuid")
     private UUID id;
 
     private String name;
@@ -30,6 +31,13 @@ public class Buyer implements Serializable {
     private boolean isAdmin = false;
 
     private boolean boughtCupom = false;
+
+    public Buyer(UUID id, String name, String email, String cpf) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.cpf = cpf;
+    }
 
     public Buyer(String name, String email, String cpf) {
         this.name = name;
