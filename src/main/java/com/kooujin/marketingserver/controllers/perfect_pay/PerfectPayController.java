@@ -25,4 +25,30 @@ public class PerfectPayController {
         return ResponseEntity.status(HttpStatus.CREATED).body(buyerRepository.save(newBuyer));
     }
 
+    @PostMapping("/buyer/premium")
+    public ResponseEntity<String> markAsPremium(@RequestBody PerfectPayDTO buyer) {
+        Optional<Buyer> savedBuyer = buyerRepository.findByCpf(buyer.getCustomer().getIdentification_number());
+
+        if (savedBuyer.isPresent()) {
+            savedBuyer.get().setPremium(true);
+            buyerRepository.save(savedBuyer.get());
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    }
+
+    @PostMapping("/buyer/cupom")
+    public ResponseEntity<String> markBoughtCupom(@RequestBody PerfectPayDTO buyer) {
+        Optional<Buyer> savedBuyer = buyerRepository.findByCpf(buyer.getCustomer().getIdentification_number());
+
+        if (savedBuyer.isPresent()) {
+            savedBuyer.get().setBoughtCupom(true);
+            buyerRepository.save(savedBuyer.get());
+            return ResponseEntity.ok().build();
+        }
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+    }
+
 }
