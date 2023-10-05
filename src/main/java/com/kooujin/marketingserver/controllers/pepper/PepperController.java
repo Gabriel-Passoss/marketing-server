@@ -1,7 +1,6 @@
 package com.kooujin.marketingserver.controllers.pepper;
 
 import com.kooujin.marketingserver.dtos.pepper.PepperDTO;
-import com.kooujin.marketingserver.dtos.perfect_pay.PerfectPayDTO;
 import com.kooujin.marketingserver.entities.Buyer;
 import com.kooujin.marketingserver.repositories.BuyerRepository;
 import org.springframework.http.HttpStatus;

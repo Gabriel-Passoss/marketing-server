@@ -2,13 +2,13 @@ package com.kooujin.marketingserver.dtos.pepper;
 
 import lombok.*;
 
+@Getter
 @AllArgsConstructor
 public class PepperDTO {
     @NonNull
     private String doc;
 
     @NonNull
-    @Getter
     @Setter
     private String email;
 
@@ -18,10 +18,6 @@ public class PepperDTO {
     private String name;
 
     public PepperDTO() {}
-
-    public String getDoc() {
-        return doc;
-    }
 
     public void setDoc(String doc) {
         this.doc = doc.replaceAll("\\.", "").replaceAll("-", "");
