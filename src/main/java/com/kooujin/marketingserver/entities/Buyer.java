@@ -30,6 +30,7 @@ public class Buyer implements Serializable {
 
     private boolean isAdmin = false;
 
+
     private boolean boughtCupom = false;
 
     public Buyer(UUID id, String name, String email, String cpf) {

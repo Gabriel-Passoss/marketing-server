@@ -34,7 +34,7 @@ public class MainController {
         Optional<Buyer> savedBuyer = buyerRepository.findByCpf(admin.getCpf());
 
         if (savedBuyer.isEmpty()) {
-            Buyer newBuyer = new Buyer(UUID.randomUUID(), admin.getName(), admin.getEmail(), admin.getCpf());
+            Buyer newBuyer = new Buyer(admin.getName(), admin.getEmail(), admin.getCpf());
             newBuyer.setAdmin(true);
             newBuyer.setBoughtCupom(true);
             newBuyer.setPremium(true);
