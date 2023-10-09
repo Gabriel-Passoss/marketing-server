@@ -1,5 +1,6 @@
 package com.kooujin.marketingserver.controllers;
 
+import com.kooujin.marketingserver.dtos.FindUserDTO;
 import com.kooujin.marketingserver.dtos.SaveAdminDTO;
 import com.kooujin.marketingserver.entities.Buyer;
 import com.kooujin.marketingserver.repositories.BuyerRepository;
@@ -18,9 +19,15 @@ public class MainController {
         this.buyerRepository = buyerRepository;
     }
 
-    @GetMapping("/buyer/{cpf}")
-    public ResponseEntity<Object> findBuyer(@PathVariable(value = "cpf") String cpf) {
-        Optional<Buyer> buyer = buyerRepository.findByCpf(cpf);
+    @PostMapping("/buyer/find")
+    public ResponseEntity<Object> findBuyer(@RequestBody FindUserDTO user) {
+        Optional<Buyer> buyer = Optional.empty();
+        if (user.getCpf() != null) {
+            buyer = buyerRepository.findByCpf(user.getCpf());
+        } else if (user.getEmail() != null) {
+            buyer = buyerRepository.findByEmail(user.getEmail());
+        }
+
 
         if (buyer.isPresent()) {
             return ResponseEntity.status(HttpStatus.OK).body(buyer.get());
