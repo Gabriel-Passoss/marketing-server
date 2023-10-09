@@ -46,6 +46,12 @@ public class Buyer implements Serializable {
         this.cpf = cpf;
     }
 
+    public Buyer(String name, String email) {
+        this.name = name;
+        this.email = email;
+        this.cpf = "";
+    }
+
     public Buyer() {
 
     }
