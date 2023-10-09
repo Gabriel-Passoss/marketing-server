@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -17,6 +19,13 @@ public class MainController {
 
     public MainController(BuyerRepository buyerRepository) {
         this.buyerRepository = buyerRepository;
+    }
+
+    @GetMapping("/buyer/findall")
+    public ResponseEntity<List<Buyer>> findAllBuyers() {
+        List<Buyer> buyers = buyerRepository.findAll();
+
+        return ResponseEntity.status(HttpStatus.OK).body(buyers);
     }
 
     @PostMapping("/buyer/find")
