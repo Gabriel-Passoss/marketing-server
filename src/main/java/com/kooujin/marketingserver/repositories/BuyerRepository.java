@@ -10,4 +10,6 @@ import java.util.UUID;
 @Repository
 public interface BuyerRepository extends JpaRepository<Buyer, UUID> {
     Optional<Buyer> findByCpf(String cpf);
+
+    Optional<Buyer> findByEmail(String email);
 }
